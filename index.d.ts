@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2026 The Stdlib Authors.
@@ -16,16 +16,27 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
+
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@esm/index.d.ts"/>
+
+import { typedndarray } from '@stdlib/types/ndarray';
+import { Collection } from '@stdlib/types/array';
 
 /**
-* Rotate an ndarray 180 degrees in a specified plane.
+* Rotates an ndarray 180 degrees in a specified plane.
 *
-* @module @stdlib/ndarray-base-rot180
+* ## Notes
+*
+* -   Each provided dimension index must reside on the interval `[-ndims, ndims-1]`.
+*
+* @param x - input array
+* @param dims - dimension indices defining the plane of rotation
+* @param writable - boolean indicating whether the returned ndarray should be writable
+* @returns ndarray view
 *
 * @example
 * var array = require( '@stdlib/ndarray-array' );
-* var rot180 = require( '@stdlib/ndarray-base-rot180' );
 *
 * var x = array( [ [ 1, 2 ], [ 3, 4 ] ] );
 * // returns <ndarray>[ [ 1, 2 ], [ 3, 4 ] ]
@@ -33,12 +44,9 @@
 * var y = rot180( x, [ 0, 1 ], false );
 * // returns <ndarray>[ [ 4, 3 ], [ 2, 1 ] ]
 */
-
-// MODULES //
-
-var main = require( './main.js' );
+declare function rot180<T = unknown, U extends typedndarray<T> = typedndarray<T>>( x: U, dims: Collection<number>, writable: boolean ): U;
 
 
 // EXPORTS //
 
-module.exports = main;
+export = rot180;
